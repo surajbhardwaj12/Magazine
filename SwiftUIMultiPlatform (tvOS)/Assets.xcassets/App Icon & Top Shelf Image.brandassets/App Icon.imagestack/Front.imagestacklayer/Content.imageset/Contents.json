@@ -1,11 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "new copy.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
-      "filename" : "imgpsh_fullsize_anim.png",
+      "filename" : "new.png",
       "idiom" : "tv",
       "scale" : "2x"
     }

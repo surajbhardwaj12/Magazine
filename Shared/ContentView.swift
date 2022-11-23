@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct ContentView: View {
     @State private var presentImporter = false
     @State var pdfDetails = Welcome(data: [Datum]())
@@ -20,42 +19,42 @@ struct ContentView: View {
 
     #if os(tvOS)
     @State private var numberOfRows = 4
+    #elseif os(macOS)
+    @State private var numberOfRows = 5
     #else
     @State private var numberOfRows = 2
     #endif
     @State var isActive = false
     @State var selectedUrl = ""
     @State var isLoading = true
-
-    
+    @State var userGuideUrl: URL?
     var body: some View {
-
+#if os(macOS)
+        let platFormText = PlatformText()
+        return platFormText
+        #endif
+        #if !os(macOS)
         let columns = Array(
-            repeating: GridItem(.flexible(), spacing: Hspacing), count: UIDevice.isIPad ? 3 : numberOfRows)
+            repeating: GridItem(.flexible(), spacing: Hspacing), count: numberOfRows)
         return NavigationView{
             ZStack{
                 ScrollView {
                                 
                                 LazyVGrid(columns: columns, spacing: Vspacing){
-                #if !os(macOS)
+             
                                     ForEach(0..<self.pdfDetails.data.count, id: \.self) { currentIndex in
                                         NavigationLink(destination:
                                                         
                                                         MyView(pdfLink: self.pdfDetails.data[currentIndex].magazineURL)
                                         )
                                         {
-                                            /*ItemView(item : self.pdfDetails.data[currentIndex]) {
-                                                selectedUrl = self.pdfDetails.data[currentIndex].magazineURL
-                                                isActive = true
-                                                print("Button Clicked \(currentIndex)")
-                                            }*/
                                             ItemView(item: self.pdfDetails.data[currentIndex])
                                                 
                                         }
                                     }
                                     .padding(.horizontal)
                                     Spacer()
-                #endif
+        
                                 }
                                 
                                 .background(Color.white)
@@ -74,29 +73,12 @@ struct ContentView: View {
             .navigationTitle("Magazine")
             
           
-#if !os(macOS)
-//            if isLoading {
-//                ZStack {
-//                    Color(UIColor.systemBackground)
-//                        .ignoresSafeArea()
-//                    ProgressView()
-//                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-//                        .scaleEffect(3)
-//                }
-//            }
-#endif
-        }.navigationViewStyle(.stack)
-//        .onChange(of: isLoading) { isLoading in
-//            if isLoading {
-//                startLoading()
-//                    ProgressView()
-//                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-//                    .scaleEffect(3)
-//            }
-//            else{
-//
-//            }
-//        }
+
+
+
+        }
+        .navigationViewStyle(.stack)
+        #endif
     }
     
     func toggleVar() {
@@ -118,7 +100,7 @@ struct ContentView: View {
     }
 }
 
-
+#if !os(macOS)
 struct ItemView: View {
     let item: Datum
 #if os(tvOS)
@@ -136,12 +118,13 @@ struct ItemView: View {
                     .data(url: URL(string: item.magazineThumbnail)!)
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
-//                    .foregroundColor(.clear)
+                    .foregroundColor(.clear)
                 Text(item.magazineName.uppercased())
+                    .foregroundColor(.black)
 #if os(tvOS)
-                    .font(.system(size: 30,weight: .bold, design: .rounded))
+                    .font(.system(size: 25,weight: .bold, design: .rounded))
                 #else
-                    .font(.system(size: 18,weight: .bold, design: .rounded))
+                    .font(.system(size: 15,weight: .bold, design: .rounded))
                 #endif
                     
                 
@@ -161,6 +144,7 @@ struct ItemView: View {
         .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
 }
+#endif
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
@@ -197,6 +181,7 @@ extension Image {
     }
 }
 #endif
+/*
 @available(iOS 13, macCatalyst 13, tvOS 13, watchOS 6, *)
 struct ScaledFont: ViewModifier {
     @Environment(\.sizeCategory) var sizeCategory
@@ -215,7 +200,7 @@ extension View {
         return self.modifier(ScaledFont(name: name, size: size))
     }
 }
-
+ */
 struct LoaderView: View {
     var tintColor: Color = .blue
     var scaleSize: CGFloat = 1.0
@@ -235,6 +220,7 @@ extension View {
         }
     }
 }
+#if !os(macOS)
 extension UIDevice {
     static var isIPad: Bool {
         UIDevice.current.userInterfaceIdiom == .pad
@@ -244,3 +230,4 @@ extension UIDevice {
         UIDevice.current.userInterfaceIdiom == .phone
     }
 }
+#endif

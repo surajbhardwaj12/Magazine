@@ -31,11 +31,16 @@ class Api : ObservableObject{
     @Published var books = Welcome.init(data: [Datum]())
     
     func loadData(completion:@escaping (Welcome) -> ()) {
-        guard let url = URL(string: "https://magazine.herokuapp.com/magazine") else {
+        guard let url = URL(string: "https://magazine.herokuapp.com/magazine")
+        else {
             print("Invalid url...")
             return
         }
-        URLSession.shared.dataTask(with: url) { data, response, error in
+   
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
         
             let jsondata = try! JSONSerialization.jsonObject(with: data ?? Data(), options: JSONSerialization.ReadingOptions.fragmentsAllowed)
             print(jsondata)

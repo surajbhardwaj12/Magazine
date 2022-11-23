@@ -221,7 +221,7 @@ class PDFViewController: UIViewController, UIPageViewControllerDelegate, UIPageV
 			}
 			
 			self.scrollView.setZoomScale(zoomInScale, animated: true)
-//			self.hideNavigationBarIfRequired()
+			self.hideNavigationBarIfRequired()
 		}
 	}
 	
@@ -234,7 +234,7 @@ class PDFViewController: UIViewController, UIPageViewControllerDelegate, UIPageV
 			}
 			
 			self.scrollView.setZoomScale(zoomOutScale, animated: true)
-//			self.hideNavigationBarIfRequired()
+			self.hideNavigationBarIfRequired()
 		}
 	}
 	
@@ -401,7 +401,7 @@ class PDFViewController: UIViewController, UIPageViewControllerDelegate, UIPageV
 #endif
 	func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
 		// Hide Navigation Bar
-//		self.hideNavigationBarIfRequired()
+		self.hideNavigationBarIfRequired()
 		
 		// Set Flag
 		self.isTransitioning = true
