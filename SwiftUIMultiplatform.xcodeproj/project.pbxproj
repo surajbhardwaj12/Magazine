@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,6 +50,7 @@
 		138385B92924A055003D45BC /* Sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 138385B52924A055003D45BC /* Sample.pdf */; };
 		138385BA2924A055003D45BC /* Sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 138385B52924A055003D45BC /* Sample.pdf */; };
 		138385BB2924A055003D45BC /* Sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 138385B52924A055003D45BC /* Sample.pdf */; };
+		13A65C5129309A3C00F8C98A /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = 13A65C5029309A3C00F8C98A /* TPPDF */; };
 		16400FB125F0FB0500EB19B9 /* SwiftUIMultiplatformApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16400F9E25F0FB0200EB19B9 /* SwiftUIMultiplatformApp.swift */; };
 		16400FB225F0FB0500EB19B9 /* SwiftUIMultiplatformApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16400F9E25F0FB0200EB19B9 /* SwiftUIMultiplatformApp.swift */; };
 		16400FB325F0FB0500EB19B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16400F9F25F0FB0200EB19B9 /* ContentView.swift */; };
@@ -132,6 +133,7 @@
 		1383858729249EAE003D45BC /* PDFPageImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFPageImageView.swift; sourceTree = "<group>"; };
 		1383858829249EAE003D45BC /* PDFPageDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFPageDrawView.swift; sourceTree = "<group>"; };
 		138385B52924A055003D45BC /* Sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Sample.pdf; sourceTree = "<group>"; };
+		13A65C44292F3FD100F8C98A /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = "../../macos17/Downloads/TPPDF-master 2/Package.swift"; sourceTree = "<group>"; };
 		16400F9E25F0FB0200EB19B9 /* SwiftUIMultiplatformApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMultiplatformApp.swift; sourceTree = "<group>"; };
 		16400F9F25F0FB0200EB19B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		16400FA025F0FB0400EB19B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13A65C5129309A3C00F8C98A /* TPPDF in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +200,7 @@
 		16400F9825F0FB0100EB19B9 = {
 			isa = PBXGroup;
 			children = (
+				13A65C44292F3FD100F8C98A /* Package.swift */,
 				132574B7292638FE002CF730 /* Model.swift */,
 				138385B52924A055003D45BC /* Sample.pdf */,
 				1383858029249EAB003D45BC /* CGPDFPage+Extension.swift */,
@@ -329,6 +333,8 @@
 			dependencies = (
 			);
 			name = "SwiftUIMultiplatform (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "SwiftUIMultiplatform (iOS)";
 			productReference = 16400FA525F0FB0500EB19B9 /* SwiftUIMultiplatform.app */;
 			productType = "com.apple.product-type.application";
@@ -346,6 +352,9 @@
 			dependencies = (
 			);
 			name = "SwiftUIMultiplatform (macOS)";
+			packageProductDependencies = (
+				13A65C5029309A3C00F8C98A /* TPPDF */,
+			);
 			productName = "SwiftUIMultiplatform (macOS)";
 			productReference = 16400FAD25F0FB0500EB19B9 /* SwiftUIMultiplatform.app */;
 			productType = "com.apple.product-type.application";
@@ -458,6 +467,9 @@
 				Base,
 			);
 			mainGroup = 16400F9825F0FB0100EB19B9;
+			packageReferences = (
+				13A65C4F29309A3C00F8C98A /* XCRemoteSwiftPackageReference "TPPDF" */,
+			);
 			productRefGroup = 16400FA625F0FB0500EB19B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1090,6 +1102,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		13A65C4F29309A3C00F8C98A /* XCRemoteSwiftPackageReference "TPPDF" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/techprimate/TPPDF";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		13A65C5029309A3C00F8C98A /* TPPDF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13A65C4F29309A3C00F8C98A /* XCRemoteSwiftPackageReference "TPPDF" */;
+			productName = TPPDF;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 16400F9925F0FB0100EB19B9 /* Project object */;
 }

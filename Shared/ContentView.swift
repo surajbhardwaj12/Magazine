@@ -30,8 +30,10 @@ struct ContentView: View {
     @State var userGuideUrl: URL?
     var body: some View {
 #if os(macOS)
-        let platFormText = PlatformText()
-        return platFormText
+        HomePage(pdfDetails: pdfDetails )
+            .onAppear {
+                onLoad()
+            }
         #endif
         #if !os(macOS)
         let columns = Array(

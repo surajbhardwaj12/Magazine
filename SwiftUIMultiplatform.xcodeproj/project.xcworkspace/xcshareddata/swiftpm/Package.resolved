@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "TPPDF",
+        "repositoryURL": "https://github.com/techprimate/TPPDF",
+        "state": {
+          "branch": "master",
+          "revision": "0dbe543c517c94d0bebacdaf1c0894a9a28c4a78",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

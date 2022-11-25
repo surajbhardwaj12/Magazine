@@ -14,5 +14,10 @@ struct SwiftUIMultiplatformApp: App {
         WindowGroup {
             ContentView()
         }
+#if !os(tvOS)
+        .commands {
+            SidebarCommands()
+        }
+#endif
     }
 }
