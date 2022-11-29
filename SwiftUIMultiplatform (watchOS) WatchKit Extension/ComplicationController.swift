@@ -1,9 +1,4 @@
-//
-//  ComplicationController.swift
-//  SwiftUIMultiplatform (watchOS) WatchKit Extension
-//
-//  Created by Ryan Grey on 04/03/2021.
-//
+
 
 import ClockKit
 

@@ -11,6 +11,10 @@
 		132574B9292638FE002CF730 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132574B7292638FE002CF730 /* Model.swift */; };
 		132574BA292638FE002CF730 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132574B7292638FE002CF730 /* Model.swift */; };
 		132574BB292638FE002CF730 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132574B7292638FE002CF730 /* Model.swift */; };
+		1380B5EF29347F3700C8CCB3 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1380B5EE29347F3700C8CCB3 /* URLImage */; };
+		1380B5F129347F3700C8CCB3 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 1380B5F029347F3700C8CCB3 /* URLImageStore */; };
+		1380B5F42934851800C8CCB3 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1380B5F32934851800C8CCB3 /* URLImage */; };
+		1380B5F6293488BE00C8CCB3 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1380B5F5293488BE00C8CCB3 /* URLImage */; };
 		1383858929249EAE003D45BC /* PDFPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1383857E29249EAB003D45BC /* PDFPageViewController.swift */; };
 		1383858B29249EAE003D45BC /* PDFPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1383857E29249EAB003D45BC /* PDFPageViewController.swift */; };
 		1383858C29249EAE003D45BC /* PDFPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1383857E29249EAB003D45BC /* PDFPageViewController.swift */; };
@@ -133,7 +137,6 @@
 		1383858729249EAE003D45BC /* PDFPageImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFPageImageView.swift; sourceTree = "<group>"; };
 		1383858829249EAE003D45BC /* PDFPageDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFPageDrawView.swift; sourceTree = "<group>"; };
 		138385B52924A055003D45BC /* Sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Sample.pdf; sourceTree = "<group>"; };
-		13A65C44292F3FD100F8C98A /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = "../../macos17/Downloads/TPPDF-master 2/Package.swift"; sourceTree = "<group>"; };
 		16400F9E25F0FB0200EB19B9 /* SwiftUIMultiplatformApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMultiplatformApp.swift; sourceTree = "<group>"; };
 		16400F9F25F0FB0200EB19B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		16400FA025F0FB0400EB19B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1380B5F42934851800C8CCB3 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +180,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1380B5EF29347F3700C8CCB3 /* URLImage in Frameworks */,
+				1380B5F129347F3700C8CCB3 /* URLImageStore in Frameworks */,
 				13A65C5129309A3C00F8C98A /* TPPDF in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,16 +197,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1380B5F6293488BE00C8CCB3 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1380B5F22934851800C8CCB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		16400F9825F0FB0100EB19B9 = {
 			isa = PBXGroup;
 			children = (
-				13A65C44292F3FD100F8C98A /* Package.swift */,
 				132574B7292638FE002CF730 /* Model.swift */,
 				138385B52924A055003D45BC /* Sample.pdf */,
 				1383858029249EAB003D45BC /* CGPDFPage+Extension.swift */,
@@ -221,6 +234,7 @@
 				16400FD625F0FF5500EB19B9 /* SwiftUIMultiplatform (watchOS) WatchKit Extension */,
 				16400FFD25F103C100EB19B9 /* SwiftUIMultiPlatform (tvOS) */,
 				16400FA625F0FB0500EB19B9 /* Products */,
+				1380B5F22934851800C8CCB3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -334,6 +348,7 @@
 			);
 			name = "SwiftUIMultiplatform (iOS)";
 			packageProductDependencies = (
+				1380B5F32934851800C8CCB3 /* URLImage */,
 			);
 			productName = "SwiftUIMultiplatform (iOS)";
 			productReference = 16400FA525F0FB0500EB19B9 /* SwiftUIMultiplatform.app */;
@@ -354,6 +369,8 @@
 			name = "SwiftUIMultiplatform (macOS)";
 			packageProductDependencies = (
 				13A65C5029309A3C00F8C98A /* TPPDF */,
+				1380B5EE29347F3700C8CCB3 /* URLImage */,
+				1380B5F029347F3700C8CCB3 /* URLImageStore */,
 			);
 			productName = "SwiftUIMultiplatform (macOS)";
 			productReference = 16400FAD25F0FB0500EB19B9 /* SwiftUIMultiplatform.app */;
@@ -423,6 +440,9 @@
 			dependencies = (
 			);
 			name = "SwiftUIMultiPlatform (tvOS)";
+			packageProductDependencies = (
+				1380B5F5293488BE00C8CCB3 /* URLImage */,
+			);
 			productName = "SwiftUIMultiPlatform (tvOS)";
 			productReference = 16400FFC25F103C100EB19B9 /* SwiftUIMultiPlatform (tvOS).app */;
 			productType = "com.apple.product-type.application";
@@ -469,6 +489,7 @@
 			mainGroup = 16400F9825F0FB0100EB19B9;
 			packageReferences = (
 				13A65C4F29309A3C00F8C98A /* XCRemoteSwiftPackageReference "TPPDF" */,
+				1380B5ED29347F3700C8CCB3 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			productRefGroup = 16400FA625F0FB0500EB19B9 /* Products */;
 			projectDirPath = "";
@@ -1104,6 +1125,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1380B5ED29347F3700C8CCB3 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		13A65C4F29309A3C00F8C98A /* XCRemoteSwiftPackageReference "TPPDF" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/techprimate/TPPDF";
@@ -1115,6 +1144,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1380B5EE29347F3700C8CCB3 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1380B5ED29347F3700C8CCB3 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		1380B5F029347F3700C8CCB3 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1380B5ED29347F3700C8CCB3 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+		1380B5F32934851800C8CCB3 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1380B5ED29347F3700C8CCB3 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		1380B5F5293488BE00C8CCB3 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1380B5ED29347F3700C8CCB3 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
 		13A65C5029309A3C00F8C98A /* TPPDF */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 13A65C4F29309A3C00F8C98A /* XCRemoteSwiftPackageReference "TPPDF" */;

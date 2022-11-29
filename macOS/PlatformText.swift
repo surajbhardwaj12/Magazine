@@ -10,6 +10,7 @@ import QuickLook
 import TPPDF
 import PDFKit
 import AppKit
+import URLImage
 
 struct PDFKitRepresentedView: NSViewRepresentable {
     
@@ -60,25 +61,53 @@ struct Option: Hashable {
     let imageName: String
 }
 
+
 struct HomePage: View {
     var pdfDetails = Welcome(data: [Datum]())
     @State var currentPage: Int = 0
     @State var total: Int = 0
     @State var pdfUrl = ""
     @State var page = 0
+    @State private var isExpanded: Bool = true
     var body: some View {
         NavigationView {
+            
             List {
+                DisclosureGroup(isExpanded: $isExpanded) {
                 ForEach(0..<self.pdfDetails.data.count, id: \.self ) { currentIndex in
                     VStack {
-                        AsyncImage(url: URL(string: pdfDetails.data[currentIndex].magazineThumbnail)) { image in
-                            image.resizable()
-                                .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
-                            
-                        } placeholder: {
-                            ProgressView()
+                       
+                       
+                        if #available(macOS 12.0, *) {
+                            AsyncImage(url: URL(string: pdfDetails.data[currentIndex].magazineThumbnail)) { image in
+                                image.resizable()
+                                    .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
+                                
+                            } placeholder: {
+                                ProgressView()
+                            }
+                        } else {
+                            let url = URL(string: pdfDetails.data[currentIndex].magazineThumbnail)!
+                            URLImage(url) {
+                                EmptyView()
+                            } inProgress: { progress in
+                                // Display progress
+                                Text("Loading...")
+                            } failure: { error, retry in
+                                // Display error and retry button
+                                VStack {
+                                    Text(error.localizedDescription)
+                                    Button("Retry", action: retry)
+                                }
+                            } content: { image in
+                                // Downloaded image
+                                image
+                                    .resizable()
+                                    .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
+                                    .foregroundColor(.clear)
+                            }
                         }
-                        
+               
                         
                         Text("\(pdfDetails.data[currentIndex].magazineName)")
                         
@@ -93,10 +122,22 @@ struct HomePage: View {
                     
                     
                 }
+            } label: {
+                Label("All Magazine", systemImage: "list.bullet.rectangle")
+            }
             }.frame(minWidth: 100, idealWidth: 200, maxWidth: 300,
                     minHeight: 0, maxHeight: .infinity,
                     alignment: .topLeading)
              .listStyle(SidebarListStyle())
+             .toolbar {
+                 ToolbarItem(id: "test") {
+                     Button(action: toggleSidebar, label: { // 1
+                         Image(systemName: "sidebar.leading")
+                     })
+                 }
+             }
+             .frame(minWidth: 150)
+            
             VStack {
                 let pdfView = PDFView()
                 let pdfLink = URL(string: pdfUrl)
@@ -112,19 +153,13 @@ struct HomePage: View {
                     Text("MAGAZINE APPLICATION")
                 }
                 
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
            
             
         }
         .navigationTitle("Magazine")
         .frame(minWidth: 600, minHeight: 400)
-        .toolbar {
-            ToolbarItem(id: "test") {
-                Button(action: toggleSidebar, label: { // 1
-                    Image(systemName: "sidebar.leading")
-                })
-            }
-        }
     }
     private func toggleSidebar() { // 2
         NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
@@ -179,18 +214,19 @@ struct MainView: View {
         
         GeometryReader{ reader in
             VStack(spacing: vStackSpcing) {
-                AsyncImage(url: URL(string: item.magazineThumbnail)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }
-                .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
+//                AsyncImage(url: URL(string: item.magazineThumbnail)) { image in
+//                    image.resizable()
+//                } placeholder: {
+//                    ProgressView()
+//                }
+//                .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
                 Text(item.magazineName.uppercased())
                     .foregroundColor(.white)
                     .font(.system(size: 15,weight: .bold, design: .rounded))
             }
             .frame(width: reader.size.width, height: reader.size.height)
             .background(Color.clear)
+            
         }
         .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
         .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)

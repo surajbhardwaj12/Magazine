@@ -1,11 +1,7 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Ryan Grey on 04/03/2021.
-//
+
 
 import SwiftUI
+import URLImage
 struct ContentView: View {
     @State private var presentImporter = false
     @State var pdfDetails = Welcome(data: [Datum]())
@@ -121,6 +117,25 @@ struct ItemView: View {
                     .resizable()
                     .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
                     .foregroundColor(.clear)
+//                let url = URL(string: item.magazineThumbnail)!
+//                URLImage(url) {
+//                    EmptyView()
+//                } inProgress: { progress in
+//                    // Display progress
+//                    Text("Loading...")
+//                } failure: { error, retry in
+//                    // Display error and retry button
+//                    VStack {
+//                        Text(error.localizedDescription)
+//                        Button("Retry", action: retry)
+//                    }
+//                } content: { image in
+//                    // Downloaded image
+//                    image
+//                        .resizable()
+//                        .aspectRatio(CGSize(width: 1, height: 1.5),contentMode: .fit)
+//                        .foregroundColor(.clear)
+//                }
                 Text(item.magazineName.uppercased())
                     .foregroundColor(.black)
 #if os(tvOS)
